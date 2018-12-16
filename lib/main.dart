@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(MainApp());
 
-const String _fontFamily = "Roboto";
-const double _margin = 16.0;
-
 class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -14,6 +11,9 @@ class MainApp extends StatelessWidget {
 }
 
 class HomeApp extends StatelessWidget {
+  String _fontFamily = "Roboto";
+  double _margin = 16.0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
