@@ -38,12 +38,6 @@ class PerhitunganState extends State<Perhitungan> {
     }
   }
 
-  String setTextButtonPerhitungan() {
-    if (type == "penjumlahan") {
-      return type.toUpperCase();
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
