@@ -1,16 +1,48 @@
 import 'package:flutter/material.dart';
 
-class Penjumlahan extends StatefulWidget {
+class Perhitungan extends StatefulWidget {
+
+  String type;
+
+  Perhitungan(String type) {
+    this.type = type.toLowerCase();
+  }
+
   @override
-  PenjumlahanState createState() => PenjumlahanState();
+  PerhitunganState createState() => PerhitunganState(type);
+
 }
 
-class PenjumlahanState extends State<Penjumlahan> {
+class PerhitunganState extends State<Perhitungan> {
+  String type;
+  String titleToolbar;
   double _margin = 16.0;
   int total = 0;
 
   TextEditingController nilai1Controller = TextEditingController();
   TextEditingController nilai2Controller = TextEditingController();
+
+  PerhitunganState(this.type) {
+    switch (type) {
+      case "penjumlahan":
+        titleToolbar = "Penjumlahan";
+        break;
+      case "pengurangan":
+        titleToolbar = "Pengurangan";
+        break;
+      case "perkalian":
+        titleToolbar = "Perkalian";
+        break;
+      case "pembagian":
+        titleToolbar = "Pembagian";
+    }
+  }
+
+  String setTextButtonPerhitungan() {
+    if (type == "penjumlahan") {
+      return type.toUpperCase();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +50,7 @@ class PenjumlahanState extends State<Penjumlahan> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Penjumlahan"),
+          title: Text(titleToolbar),
           leading: IconButton(
               icon: Icon(Icons.arrow_back),
               onPressed: () => Navigator.of(context).pop()),
@@ -43,7 +75,9 @@ class PenjumlahanState extends State<Penjumlahan> {
                 child: SizedBox(
                   width: double.infinity,
                   child: RaisedButton(
-                    child: Text("JUMLAH"),
+                    child: Text(
+                      type.toUpperCase()
+                    ),
                     onPressed: () {
                       String strNilai1 = nilai1Controller.text;
                       String strNilai2 = nilai2Controller.text;
@@ -57,7 +91,15 @@ class PenjumlahanState extends State<Penjumlahan> {
                         setState(() {
                           int nilai1 = int.parse(strNilai1);
                           int nilai2 = int.parse(strNilai2);
-                          total = nilai1 + nilai2;
+                          if (type == "penjumlahan") {
+                            total = nilai1 + nilai2;
+                          } else if (type == "pengurangan") {
+                            total = nilai1 - nilai2;
+                          } else if (type == "perkalian") {
+                            total = nilai1 * nilai2;
+                          } else if (type == "pembagian") {
+                            total = nilai1 ~/ nilai2;
+                          }
                         });
                       }
                     },
@@ -81,3 +123,5 @@ class PenjumlahanState extends State<Penjumlahan> {
     );
   }
 }
+
+

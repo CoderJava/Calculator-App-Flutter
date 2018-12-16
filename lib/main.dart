@@ -1,4 +1,4 @@
-import 'package:calculator_app/penjumlahan.dart';
+import 'package:calculator_app/perhitungan.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MainApp());
@@ -33,8 +33,10 @@ class HomeApp extends StatelessWidget {
                 ),
                 onPressed: () {
                   print("Button penjumlahan was tapped!");
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Penjumlahan()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Perhitungan("penjumlahan")));
                 },
               ),
             ),
@@ -49,6 +51,10 @@ class HomeApp extends StatelessWidget {
                   ),
                   onPressed: () {
                     print("Button pengurangan was tapped!");
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Perhitungan("pengurangan")));
                   },
                 ),
               ),
@@ -60,6 +66,10 @@ class HomeApp extends StatelessWidget {
                 child: RaisedButton(
                   onPressed: () {
                     print("Button perkalian was tapped!");
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Perhitungan("perkalian")));
                   },
                   child: Text(
                     "PERKALIAN",
@@ -75,6 +85,10 @@ class HomeApp extends StatelessWidget {
                 child: RaisedButton(
                   onPressed: () {
                     print("Button pembagian was tapped!");
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Perhitungan("pembagian")));
                   },
                   child: Text(
                     "PEMBAGIAN",
